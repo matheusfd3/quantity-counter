@@ -1,3 +1,6 @@
+const sonicCoinSound = new Audio('./sounds/sonic-coin.wav');
+const crumplingPaperSound = new Audio('./sounds/crumpling-paper.wav');
+
 let userTasks = [];
 
 function loadUserTasksFromLocalStorage() {
@@ -83,6 +86,9 @@ function incrementUserTaskValue(index) {
     const userTask = userTasks[index];
 
     if (confirm(`Adicionar +1 na tarefa "${userTask.title}"?`)) {
+        sonicCoinSound.currentTime = 0;
+        sonicCoinSound.play();
+
         userTasks[index].value++;
         userTasks[index].bestValue = Math.max(userTasks[index].value, userTasks[index].bestValue);
 
@@ -129,6 +135,8 @@ function updateUserTaskTitle(index) {
 function deleteUserTask(index) {
     const userTask = userTasks[index];
     if (confirm(`Deseja realmente excluir a Tarefa "${userTask.title}"?`)) {
+        crumplingPaperSound.currentTime = 0;
+        crumplingPaperSound.play();
         userTasks.splice(index, 1);
         saveUserTasksToLocalStorage();
         loadUserTasksOnPage();
