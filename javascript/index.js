@@ -53,7 +53,7 @@ function loadUserTasksOnPage() {
                         <span>(${userTask.actionHistory[0].createdAt})</span>
                     </div>
                     <div class="task-item-content-container">
-                        <button onclick="incrementUserTaskValue(${i})">${userTask.value}</button>
+                        <button onclick="incrementUserTaskValue(${i})">${userTask.value}x</button>
                     </div>
                 </li>
             `;
@@ -87,7 +87,7 @@ function incrementUserTaskValue(index) {
         userTasks[index].bestValue = Math.max(userTasks[index].value, userTasks[index].bestValue);
 
         const newUserTaskActionHistory = {
-            action: `+${userTasks[index].value}`,
+            action: `${userTasks[index].value}x`,
             createdAt: moment().format('DD/MM/YYYY HH:mm'),
             note: 'Incrementado'
         }
