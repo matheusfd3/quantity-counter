@@ -32,7 +32,7 @@
         <main>
             <header>
                 <h3 id="modal-title">Histórico</h3>
-                <button onclick="closeUserTaskHistoryModal()">
+                <button onclick="closeUserTaskActionHistoryModal()">
                     <ion-icon name="close-outline"></ion-icon>
                 </button>
             </header>
@@ -46,11 +46,24 @@
                         </tr>
                     </thead>
                     <tbody id="modal-table-body"></tbody>
+                    <tfoot>
+                        <tr>
+                            <th id="modal-best-value" colspan="3"></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </main>
     </section>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="./javascript/moment-with-locales.js"></script>
+    <script src="./javascript/index.js"></script>
+    <script src="./javascript/modal.js"></script>
+    <script>
+        window.onload = () => {
+            loadUserTasksFromLocalStorage();
+        }
+    </script>
 </body>
 </html>
