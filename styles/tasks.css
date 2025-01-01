@@ -1,0 +1,19 @@
+ul#task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.750rem;
+    list-style-type: none;
+}
+
+ul#task-list img#loading-gif {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 auto;
+}
+
+ul#task-list li#without-tasks p {
+    color: #AFABB6;
+    text-align: center;
+    font-size: 0.75rem;
+}
