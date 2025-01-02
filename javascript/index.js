@@ -29,7 +29,7 @@ function loadUserTasksOnPage() {
             const userTask = userTasks[i];
             
             let attributeSequenceColor = '';
-            if (userTask.currentSequence < maxSequence) {
+            if (userTask.currentSequence <= maxSequence) {
                 const taskColor = getSequenceColor(userTask.currentSequence);
                 attributeSequenceColor = `style="color: ${taskColor}"`;
             } else {
