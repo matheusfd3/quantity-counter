@@ -35,7 +35,7 @@ function loadUserTasksOnPage() {
                 <li class="task-item pulse-green">
                     <ul class="task-item-actions">
                         <li>
-                            <button onclick="resetUserTask(${i})">
+                            <button onclick="resetUserTaskSequence(${i})">
                                 <ion-icon name="refresh-outline"></ion-icon>
                             </button>
                             <button onclick="openUserTaskActionHistoryModal(${i})">
@@ -56,7 +56,7 @@ function loadUserTasksOnPage() {
                         <span>(${userTask.actionHistory[0].createdAt})</span>
                     </div>
                     <div class="task-item-content-container">
-                        <button onclick="incrementUserTaskValue(${i})">${userTask.value}x</button>
+                        <button onclick="incrementUserTaskSequence(${i})">${userTask.currentSequence}x</button>
                     </div>
                 </li>
             `;
@@ -64,7 +64,7 @@ function loadUserTasksOnPage() {
     }
 }
 
-function resetUserTask(index) {
+function resetUserTaskSequence(index) {
     const userTask = userTasks[index];
 
     if (confirm(`Deseja realmente resetar a tarefa "${userTask.title}"?`)) {
@@ -74,7 +74,7 @@ function resetUserTask(index) {
             note: prompt('Motivo do reset:', '').trim()
         }
         
-        userTasks[index].value = 0;
+        userTasks[index].currentSequence = 0;
         userTasks[index].actionHistory.push(newUserTaskActionHistory);
 
         saveUserTasksToLocalStorage();
@@ -82,18 +82,19 @@ function resetUserTask(index) {
     }
 }
 
-function incrementUserTaskValue(index) {
+function incrementUserTaskSequence(index) {
     const userTask = userTasks[index];
 
     if (confirm(`Adicionar +1 na tarefa "${userTask.title}"?`)) {
         sonicCoinSound.currentTime = 0;
         sonicCoinSound.play();
 
-        userTasks[index].value++;
-        userTasks[index].bestValue = Math.max(userTasks[index].value, userTasks[index].bestValue);
+        userTasks[index].totalValue++;
+        userTasks[index].currentSequence++;
+        userTasks[index].bestSequence = Math.max(userTasks[index].currentSequence, userTasks[index].bestSequence);
 
         const newUserTaskActionHistory = {
-            action: `${userTasks[index].value}x`,
+            action: `${userTasks[index].currentSequence}x`,
             createdAt: moment().format('DD/MM/YYYY HH:mm'),
             note: 'Incrementado'
         }
@@ -161,8 +162,9 @@ function sendForm() {
 
     const newUserTask = {
         title: taskTitle,
-        value: 0,
-        bestValue: 0,
+        totalValue: 0,
+        currentSequence: 0,
+        bestSequence: 0,
         actionHistory: [{
             action: 'Criação',
             createdAt: moment().format('DD/MM/YYYY HH:mm'),

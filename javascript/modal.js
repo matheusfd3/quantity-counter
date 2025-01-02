@@ -9,7 +9,8 @@ function openUserTaskActionHistoryModal(index) {
     const userTaskActionHistory = userTask.actionHistory;
     
     document.getElementById('modal-title').innerText = userTask.title;
-    document.getElementById('modal-best-value').innerText = `Melhor sequência: ${userTask.bestValue}`;
+    document.getElementById('modal-total-value').innerText = `Realizados: ${userTask.totalValue}x`;
+    document.getElementById('modal-best-sequence').innerText = `Melhor sequência: ${userTask.bestSequence}x`;
     tableBodyDOM.innerHTML = '';
 
     userTaskActionHistory.forEach((history) => {
