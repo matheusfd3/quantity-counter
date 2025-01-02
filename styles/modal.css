@@ -71,7 +71,7 @@ section#modal-container main div#table-container table thead th {
     z-index: 1;
 }
 
-section#modal-container main div#table-container table tfoot th {
+section#modal-container main div#table-container table tfoot {
     background-color: #252529;
     position: sticky;
     bottom: 0;
