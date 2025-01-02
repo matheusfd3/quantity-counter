@@ -11,10 +11,11 @@ function openUserTaskActionHistoryModal(index) {
     document.getElementById('modal-title').innerText = userTask.title;
     document.getElementById('modal-total-made').innerText = `Realizado: ${userTask.made}x`;
     document.getElementById('modal-best-sequence').innerText = `Melhor sequência: ${userTask.bestSequence}x`;
-    tableBodyDOM.innerHTML = '';
+
+    let tableContent = '';
 
     userTaskActionHistory.forEach((history) => {
-        tableBodyDOM.innerHTML += `
+        tableContent += `
             <tr>
                 <td>${history.action}</td>
                 <td>${history.createdAt}</td>
@@ -23,5 +24,6 @@ function openUserTaskActionHistoryModal(index) {
         `;
     });
 
+    tableBodyDOM.innerHTML = tableContent;
     document.getElementById('modal-container').style.display = 'flex';
 }

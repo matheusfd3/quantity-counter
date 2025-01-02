@@ -16,7 +16,7 @@ function saveUserTasksToLocalStorage() {
 
 function loadUserTasksOnPage() {
     const taskListDOM = document.getElementById('task-list');
-    taskListDOM.innerHTML = '';
+    let taskListContent = '';
 
     if (userTasks.length === 0) {
         taskListDOM.innerHTML = `
@@ -36,7 +36,7 @@ function loadUserTasksOnPage() {
                 attributeSequenceColor = 'class="hue-rainbow"';
             }
 
-            taskListDOM.innerHTML += `
+            taskListContent += `
                 <li class="task-item pulse-green">
                     <ul class="task-item-actions">
                         <li>
@@ -69,6 +69,7 @@ function loadUserTasksOnPage() {
                 </li>
             `;
         }
+        taskListDOM.innerHTML = taskListContent;
     }
 }
 
