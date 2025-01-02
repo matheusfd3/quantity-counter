@@ -145,5 +145,5 @@ ul#task-list li.task-item div.task-item-content-container button {
 }
 
 .hue-rainbow {
-    animation: hueCycle 4s infinite linear;
+    animation: hueCycle 5s infinite linear;
 }
