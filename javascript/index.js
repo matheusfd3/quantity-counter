@@ -89,7 +89,7 @@ function incrementUserTaskSequence(index) {
         sonicCoinSound.currentTime = 0;
         sonicCoinSound.play();
 
-        userTasks[index].totalValue++;
+        userTasks[index].made++;
         userTasks[index].currentSequence++;
         userTasks[index].bestSequence = Math.max(userTasks[index].currentSequence, userTasks[index].bestSequence);
 
@@ -162,7 +162,7 @@ function sendForm() {
 
     const newUserTask = {
         title: taskTitle,
-        totalValue: 0,
+        made: 0,
         currentSequence: 0,
         bestSequence: 0,
         actionHistory: [{
