@@ -98,7 +98,52 @@ ul#task-list li.task-item div.task-item-content-container button {
     font-family: "Arial", "Roboto", sans-serif;
     font-size: 3rem;
     font-weight: bold;
-    color: #7450AC;
     border: 0;
     cursor: pointer;
+}
+
+@keyframes hueCycle {
+    0% {
+        color: hsl(0, 60%, 50%);
+    }
+    8.333% {
+        color: hsl(30, 60%, 50%);
+    }
+    16.666% {
+        color: hsl(60, 60%, 50%);
+    }
+    25% {
+        color: hsl(90, 60%, 50%); 
+    }
+    33.333% {
+        color: hsl(120, 60%, 50%);
+    }
+    41.666% {
+        color: hsl(150, 60%, 50%);
+    }
+    50% {
+        color: hsl(180, 60%, 50%);
+    }
+    58.333% {
+        color: hsl(210, 60%, 50%);
+    }
+    66.666% {
+        color: hsl(240, 60%, 50%);
+    }
+    75% {
+        color: hsl(270, 60%, 50%);
+    }
+    83.333% {
+        color: hsl(300, 60%, 50%);
+    }
+    91.666% {
+        color: hsl(330, 60%, 50%);
+    }
+    100% {
+        color: hsl(360, 60%, 50%);
+    }
+}
+
+.hue-rainbow {
+    animation: hueCycle 4s infinite linear;
 }

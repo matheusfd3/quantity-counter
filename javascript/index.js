@@ -27,6 +27,14 @@ function loadUserTasksOnPage() {
     } else {
         for (let i = 0; i < userTasks.length; i++) {
             const userTask = userTasks[i];
+            
+            let attributeSequenceColor = '';
+            if (userTask.currentSequence < maxSequence) {
+                const taskColor = getSequenceColor(userTask.currentSequence);
+                attributeSequenceColor = `style="color: ${taskColor}"`;
+            } else {
+                attributeSequenceColor = 'class="hue-rainbow"';
+            }
 
             taskListDOM.innerHTML += `
                 <li class="task-item pulse-green">
@@ -53,7 +61,10 @@ function loadUserTasksOnPage() {
                         <span>(${userTask.actionHistory[0].createdAt})</span>
                     </div>
                     <div class="task-item-content-container">
-                        <button onclick="incrementUserTaskSequence(${i})">${userTask.currentSequence}x</button>
+                        <button 
+                            onclick="incrementUserTaskSequence(${i})"
+                            ${attributeSequenceColor}
+                        >${userTask.currentSequence}x</button>
                     </div>
                 </li>
             `;
