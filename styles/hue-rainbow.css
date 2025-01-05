@@ -305,5 +305,5 @@
 }
 
 .hue-rainbow {
-  animation: hueCycle 6s infinite linear;
+  animation: hueCycle 3.6s infinite linear;
 }
